@@ -1,0 +1,19 @@
+<body>
+    <h1>Layout</h1>
+    <%= userList.length  %>
+
+    
+    <ul>
+        <% userList.forEach((user) => { %>
+          <li>Email: <%= user.email %></li>
+          <li>Firstname: <%= user.lastname %></li>
+          <li>Lastname: <%= user.firstname %></li>
+          
+          <li><td><a href="/edituser/<%=user.id%>" class="edit-link" >Edit</a></td></li>
+          <li><td><a href="/deleteuser/<%=user.id%>" class="edit-link" >Delete</a></td></li>
+          
+        <% }) %>
+      </ul>
+    
+</body>
+
