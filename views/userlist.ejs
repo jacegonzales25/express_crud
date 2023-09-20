@@ -7,8 +7,8 @@
     <ul>
         <% userList.forEach((user) => { %>
           <li>Email: <%= user.email %></li>
-          <li>Firstname: <%= user.lastname %></li>
-          <li>Lastname: <%= user.firstname %></li>
+          <li>Firstname: <%= user.firstname %></li>
+          <li>Lastname: <%= user.lastname %></li>
           
           <li><td><a href="/edituser/<%=user.id%>" class="edit-link" >Edit</a></td></li>
           <li><td><a href="/deleteuser/<%=user.id%>" class="edit-link" >Delete</a></td></li>

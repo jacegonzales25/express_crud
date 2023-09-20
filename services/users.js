@@ -15,7 +15,6 @@ async function getMultipleUsers(page = 1){
     meta
   }
 }
-
 async function getUser(id){
   const row = await db.query(
     `SELECT id, firstname, lastname,email  
@@ -33,8 +32,26 @@ async function saveUser(newUser){
   );
 }
 
+async function updateUser(newUser){
+  const row = await db.query(
+    `UPDATE users
+    SET lastname='${newUser.lastname}',
+        firstname= '${newUser.firstname}',
+        email='${newUser.email}' 
+    WHERE id='${newUser.id}'`
+  );
+}
+async function deleteUser(id){
+  const row = await db.query(
+    `DELETE FROM users
+     WHERE id='${id}'`
+  );
+}
+
 module.exports = {
   getMultipleUsers,
   getUser,
-  saveUser
+  saveUser,
+  updateUser,
+  deleteUser
 }

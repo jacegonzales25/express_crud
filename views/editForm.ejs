@@ -1,7 +1,7 @@
 <h2>Edit form</h2>
 <form action="/updateuser" method="POST"> 
     <input type="hidden" name="id" value="<%=user.id  %>">  
+    <input type="text" placeholder="firstname" name="firstname" value="<%=user.firstname %> ">  
+    <input type="text" placeholder="lastname" name="lastname" value="<%=user.lastname %> ">  
     <input type="email" placeholder="Email" name="email" value="<%=user.email  %>">  
-    <input type="password" placeholder="Default Password" name="password" value="<%=user.password %> ">  
-
 <button type="submit">Update</button></form>

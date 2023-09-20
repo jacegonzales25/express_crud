@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const users = require('../services/users')
 
-/* GET users listing. */
+// GET users  
 router.get('/', async function(req, res, next) {
   try {
     data = await users.getMultipleUsers(req.query.page);
@@ -16,7 +16,7 @@ router.get('/', async function(req, res, next) {
     
 });
 
-// Insert user
+// Insert user form
 router.get('/insertuser', async function(req, res, next) {
   res.render('userForm')
 });
@@ -31,37 +31,45 @@ router.post('/saveuser', async function(req, res, next) {
     data = await users.saveUser(newUser);
     res.redirect('/')
   }catch (err){
-    console.error(`Error inserting users `, err.message);
+    console.error(`Error inserting user `, err.message);
     next(err);
   }  
   
 });
 
-//update user
+//edit user form
 router.get('/edituser/:id', async function(req, res, next) {
   const id = req.params.id
   user = await users.getUser(id);
   res.render('editForm',{user: user})
 });
+
 //update user
 router.post('/updateuser', async function(req, res, next) {
-  const id = req.body.id
   const user = {
     email: req.body.email,
-    password: req.body.password,
-    usertype: 'USER',
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    id:req.body.id
   }
-  
-   
+  try {
+    data = await users.updateUser(user);
+  }catch (err){
+    console.error(`Error updating user `, err.message);
+    next(err);
+  }  
   res.redirect('/')
-  
 });
 
-
+// delete user
 router.get('/deleteuser/:id', async function(req, res, next) {
   const id = req.params.id
-     
+  try {
+    data = await users.deleteUser(id);
+  }catch (err){
+    console.error(`Error deleting user `, err.message);
+    next(err);
+  }  
   res.redirect('/')
-  
 });
 module.exports = router;
