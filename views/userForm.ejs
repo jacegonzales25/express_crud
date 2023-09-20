@@ -1,5 +1,15 @@
-<form action="/users/saveUser" method="POST">  
-    <input type="email" placeholder="Email" name="email" required >  
-    <input type="password" placeholder="Default Password" name="password">  
+<form action="/saveUser"  method="POST">  
+    
 
-<button type="submit">Submit</button></form>
+    <label >Firstname</label>
+    <input style="margin: 10px;" type="text" placeholder="Firt Name" name="firstname" required >  
+    <br>
+    <label>Lastname</label>
+    <input style="margin: 10px;"  type="text" placeholder="Last Name" name="lastname" required >  
+    <br>
+    <label>Email</label>
+    <input style="margin: 10px;"  type="email" placeholder="Email" name="email" required >  
+    <br>
+    <button style="margin: 10px;"  type="submit">Submit</button>
+   
+</form>

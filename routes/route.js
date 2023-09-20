@@ -5,7 +5,7 @@ const users = require('../services/users')
 /* GET users listing. */
 router.get('/', async function(req, res, next) {
   try {
-    data = await users.getMultiple(req.query.page);
+    data = await users.getMultipleUsers(req.query.page);
     var userData = data.users
     console.log(userData)
     res.render('userlist', {userList: userData});
@@ -24,23 +24,23 @@ router.get('/insertuser', async function(req, res, next) {
 router.post('/saveuser', async function(req, res, next) {
   const newUser = {
     email: req.body.email,
-    password: req.body.password,
-    usertype: 'USER',
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
   }
-
-  res.redirect('/')
+  try {
+    data = await users.saveUser(newUser);
+    res.redirect('/')
+  }catch (err){
+    console.error(`Error inserting users `, err.message);
+    next(err);
+  }  
   
 });
 
 //update user
 router.get('/edituser/:id', async function(req, res, next) {
   const id = req.params.id
-  const user = await prisma.users.findFirst({
-    where: {
-            id: id
-        }
-      }
-  )
+  user = await users.getUser(id);
   res.render('editForm',{user: user})
 });
 //update user
