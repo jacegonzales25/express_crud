@@ -1,3 +1,6 @@
+<link href="/stylesheets/output.css" rel="stylesheet">
+
+<!-- TODO: Edit Profile? -->
 <h2>Edit form</h2>
 <form action="/updateuser" method="POST"> 
     <input type="hidden" name="id" value="<%=user.id  %>">  
@@ -5,3 +8,4 @@
     <input type="text" placeholder="lastname" name="lastname" value="<%=user.lastname %> ">  
     <input type="email" placeholder="Email" name="email" value="<%=user.email  %>">  
 <button type="submit">Update</button></form>
+
