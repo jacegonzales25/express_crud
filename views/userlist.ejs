@@ -1,7 +1,5 @@
-<link href="/stylesheets/output.css" rel="stylesheet">
-
+<%- include("layouts/header") -%>
 <!-- TODO: Dashboard  -->
-<body>
     <h1 class="text-3xl font-bold underline">Layout</h1>
     <%= userList.length  %>
     <a href="/insertuser"> Create User</a> 
@@ -19,5 +17,5 @@
         <% }) %>
       </ul>
     
-</body>
 
+<%- include("layouts/footer") -%>
