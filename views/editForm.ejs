@@ -1,7 +1,5 @@
 <%- include("layouts/header") -%>
 
-<link href="/stylesheets/output.css" rel="stylesheet" />
-
 <div class="flex items-center justify-center">
   <div class="card w-96 bg-base-100 shadow-xl">
     <div class="card-body">
@@ -10,10 +8,16 @@
       </h2>
       <form action="/updateuser" method="POST">
         <div class="form-control w-full max-w-xs">
-            <label class="label">
-                <span class="label-text">User ID</span>
-            </label>  
-            <input type="text" name="id" value="<%=user.id  %>" class="input input-bordered w-full max-w-xs" disabled/>
+          <label class="label">
+            <span class="label-text">User ID</span>
+          </label>
+          <input
+            type="text"
+            name="id"
+            value="<%=user.id  %>"
+            class="input input-bordered w-full max-w-xs"
+            disabled
+          />
           <input type="hidden" name="id" value="<%=user.id  %>" />
           <label class="label">
             <span class="label-text">First Name</span>

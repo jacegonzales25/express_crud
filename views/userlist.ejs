@@ -3,9 +3,10 @@
 <div class="overflow-x-auto">
   <table class="table">
     <!-- head -->
+    <h1 class="p-3">Total Number of Users: <%= userList.length %></h1>
     <thead>
       <tr>
-        <th></th>
+        <th>ID</th>
         <th>Email</th>
         <th>First Name</th>
         <th>Last Name</th>
@@ -13,45 +14,27 @@
     </thead>
     <tbody>
       <!-- row 1 -->
-      <tr>
-        <th>1</th>
-        <td>Cy Ganderton</td>
-        <td>Quality Control Specialist</td>
-        <td>Blue</td>
-      </tr>
-      <!-- row 2 -->
+      <% userList.forEach((user) => { %>
       <tr class="hover">
-        <th>2</th>
-        <td>Hart Hagerty</td>
-        <td>Desktop Support Technician</td>
-        <td>Purple</td>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.firstname %></td>
+        <td><%= user.lastname %></td>
+        <td>
+          <a href="/edituser/<%=user.id%>" class="edit-link"
+            ><button class="btn btn-info btn-outline btn-sm">Edit</button></a
+          >
+        </td>
+        <td>
+          <a href="/deleteuser/<%=user.id%>" class="edit-link"
+            ><button class="btn btn-error btn-outline btn-sm">Delete</button></a
+          >
+        </td>
       </tr>
-      <!-- row 3 -->
-      <tr>
-        <th>3</th>
-        <td>Brice Swyre</td>
-        <td>Tax Accountant</td>
-        <td>Red</td>
-      </tr>
+
+      <%}) %>
     </tbody>
   </table>
 </div>
-
-    <%= userList.length  %>
-    <a href="/insertuser"> Create User</a> 
-
-    
-    <ul>
-        <% userList.forEach((user) => { %>
-          <li>Email: <%= user.email %></li>
-          <li>Firstname: <%= user.firstname %></li>
-          <li>Lastname: <%= user.lastname %></li>
-          
-          <li><td><a href="/edituser/<%=user.id%>" class="edit-link" >Edit</a></td></li>
-          <li><td><a href="/deleteuser/<%=user.id%>" class="edit-link" >Delete</a></td></li>
-          
-        <% }) %>
-      </ul>
-    
 
 <%- include("layouts/footer") -%>
