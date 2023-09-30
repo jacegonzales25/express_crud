@@ -1,20 +1,40 @@
-<body>
-    <h1>Layout</h1>
-    <%= userList.length  %>
-    <a href="/insertuser"> Create User</a> 
+<%- include("layouts/header") -%>
+<!-- TODO: Dashboard  -->
+<div class="overflow-x-auto">
+  <table class="table">
+    <!-- head -->
+    <h1 class="p-3">Total Number of Users: <%= userList.length %></h1>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- row 1 -->
+      <% userList.forEach((user) => { %>
+      <tr class="hover">
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.firstname %></td>
+        <td><%= user.lastname %></td>
+        <td>
+          <a href="/edituser/<%=user.id%>" class="edit-link"
+            ><button class="btn btn-info btn-outline btn-sm">Edit</button></a
+          >
+        </td>
+        <td>
+          <a href="/deleteuser/<%=user.id%>" class="edit-link"
+            ><button class="btn btn-error btn-outline btn-sm">Delete</button></a
+          >
+        </td>
+      </tr>
 
-    
-    <ul>
-        <% userList.forEach((user) => { %>
-          <li>Email: <%= user.email %></li>
-          <li>Firstname: <%= user.firstname %></li>
-          <li>Lastname: <%= user.lastname %></li>
-          
-          <li><td><a href="/edituser/<%=user.id%>" class="edit-link" >Edit</a></td></li>
-          <li><td><a href="/deleteuser/<%=user.id%>" class="edit-link" >Delete</a></td></li>
-          
-        <% }) %>
-      </ul>
-    
-</body>
+      <%}) %>
+    </tbody>
+  </table>
+</div>
 
+<%- include("layouts/footer") -%>

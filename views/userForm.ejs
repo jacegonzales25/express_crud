@@ -1,15 +1,47 @@
-<form action="/saveUser"  method="POST">  
-    
+<%- include("layouts/header") -%>
 
-    <label >Firstname</label>
-    <input style="margin: 10px;" type="text" placeholder="Firt Name" name="firstname" required >  
-    <br>
-    <label>Lastname</label>
-    <input style="margin: 10px;"  type="text" placeholder="Last Name" name="lastname" required >  
-    <br>
-    <label>Email</label>
-    <input style="margin: 10px;"  type="email" placeholder="Email" name="email" required >  
-    <br>
-    <button style="margin: 10px;"  type="submit">Submit</button>
-   
-</form>
+<!-- TODO: Edit Profile? -->
+
+<div class="flex items-center justify-center">
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title">Create User</h2>
+      <form action="/saveUser" method="POST">
+        <label class="label"><span class="label-text">Firstname</span></label>
+        <input
+          type="text"
+          placeholder="First Name"
+          name="firstname"
+          required
+          class="input input-bordered w-full max-w-xs"
+        />
+        <br />
+        <label class="label"><span class="label-text">Lastname</span></label>
+        <input
+          type="text"
+          placeholder="Last Name"
+          name="lastname"
+          required
+          class="input input-bordered w-full max-w-xs"
+        />
+        <br />
+        <label class="label"><span class="label-text">Email</span></label>
+        <input
+          type="email"
+          placeholder="Email"
+          name="email"
+          required
+          class="input input-bordered w-full max-w-xs"
+        />
+        <br />
+        <div class="card-actions justify-end p-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- TODO: Create User Form in Card -->
+
+<%- include("layouts/footer") -%>
