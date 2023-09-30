@@ -1,14 +1,59 @@
 <%- include("layouts/header") -%>
 
-<link href="/stylesheets/output.css" rel="stylesheet">
+<link href="/stylesheets/output.css" rel="stylesheet" />
+
+<div class="flex items-center justify-center">
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title">
+        Edit User: <%=user.firstname %> <%=user.lastname %>
+      </h2>
+      <form action="/updateuser" method="POST">
+        <div class="form-control w-full max-w-xs">
+            <label class="label">
+                <span class="label-text">User ID</span>
+            </label>  
+            <input type="text" name="id" value="<%=user.id  %>" class="input input-bordered w-full max-w-xs" disabled/>
+          <input type="hidden" name="id" value="<%=user.id  %>" />
+          <label class="label">
+            <span class="label-text">First Name</span>
+          </label>
+          <input
+            type="text"
+            placeholder="First Name"
+            name="firstname"
+            value="<%=user.firstname %>"
+            class="input input-bordered w-full max-w-xs"
+          />
+          <label class="label">
+            <span class="label-text">Last Name</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Last Name"
+            name="lastname"
+            value="<%=user.lastname %>"
+            class="input input-bordered w-full max-w-xs"
+          />
+          <label class="label">
+            <span class="label-text">Email</span>
+          </label>
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
+            value="<%=user.email  %>"
+            class="input input-bordered w-full max-w-xs"
+          />
+          <div class="card-actions justify-end p-3">
+            <button class="btn btn-primary" type="submit">Update</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <!-- TODO: Edit Profile? -->
-<h2>Edit form</h2>
-<form action="/updateuser" method="POST"> 
-    <input type="hidden" name="id" value="<%=user.id  %>">  
-    <input type="text" placeholder="firstname" name="firstname" value="<%=user.firstname %> ">  
-    <input type="text" placeholder="lastname" name="lastname" value="<%=user.lastname %> ">  
-    <input type="email" placeholder="Email" name="email" value="<%=user.email  %>">  
-<button type="submit">Update</button></form>
-    
+
 <%- include("layouts/footer") -%>
