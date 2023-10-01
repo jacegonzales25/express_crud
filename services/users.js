@@ -8,7 +8,8 @@ async function getMultipleUsers(page = 1){
     `SELECT id, firstname, lastname,email  FROM users LIMIT ${offset},${config.listPerPage}`
   );
   const users = helper.emptyOrRows(rows);
-  const meta = {page};
+  const meta = {page,
+    totalUsers: await db.query(`SELECT COUNT(*) FROM users`)};
 
   return {
     users,

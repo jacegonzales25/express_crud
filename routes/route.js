@@ -6,9 +6,13 @@ const users = require('../services/users')
 router.get('/', async function(req, res, next) {
   try {
     data = await users.getMultipleUsers(req.query.page);
-    var userData = data.users
+    const userData = data.users
+    const totalUsers = data.meta.totalUsers;
+    const count = totalUsers[0]['COUNT(*)'];
+    const totalPages = Math.ceil(count / 10);
     console.log(userData)
-    res.render('userlist', {userList: userData});
+    console.log(count)
+    res.render('userlist', {userList: userData, count: count, totalPages: totalPages});
   } catch (err) {
     console.error(`Error getting users `, err.message);
     next(err);

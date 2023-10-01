@@ -3,7 +3,7 @@
 <div class="overflow-x-auto">
   <table class="table">
     <!-- head -->
-    <h1 class="p-3">Total Number of Users: <%= userList.length %></h1>
+    <h1 class="p-3">Total Number of Users: <%= count %></h1>
     <thead>
       <tr>
         <th>ID</th>
@@ -35,6 +35,28 @@
       <%}) %>
     </tbody>
   </table>
+
+  <div class="pagination flex items-center justify-center p-3">
+   
+      <% if (totalPages > 1) { %> <% for (let page = 1; page <= totalPages;
+      page++) { %> <% if (page === data.meta.page) { %>
+      <button
+        type="button"
+        class=" btn btn-active btn-link"
+        href="./userlist.ejs/?page=<%= page %>"
+      ><a href="/?page=<%= page %>" class="w-3 h-3">
+        <%= page %>
+      </a>
+      </button>
+      <% } else { %>
+      <button type="button" class="btn btn-link" href="./userlist.ejs/?page=<%= page %>">
+        <a href="/?page=<%= page %>" class="w-3 h-3">
+          <%= page %>
+        </a>
+      </button>
+      <% } %> <% } %> <% } %>
+    </div>
+
 </div>
 
 <%- include("layouts/footer") -%>
