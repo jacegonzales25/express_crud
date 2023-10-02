@@ -1,19 +1,36 @@
 <%- include("layouts/header") -%>
-<!-- TODO: Dashboard  -->
 <div class="overflow-x-auto">
   <table class="table">
-    <!-- head -->
-    <h1 class="p-3">Total Number of Users: <%= count %></h1>
+    <div class="flex items-center justify-center p-3">
+      <div class="join">
+        <form action="/" method="GET">
+          <div>
+            <div>
+              <input
+                class="input input-bordered join-item"
+                name="search"
+                placeholder="Search users..."
+              />
+            </div>
+          </div>
+          <div class="indicator">
+            <span class="indicator-item badge badge-primary">Users: <%= userList.length %></span> 
+            <div class="grid w-32 h-32 bg-base-300 place-items-center"><button type="submit" class="btn join-item">Search</button></div>
+          </div>
+        </form>
+      </div>
+    </div>
     <thead>
+      <th>Total Number of Users: <%= count %></th>
       <tr>
         <th>ID</th>
         <th>Email</th>
         <th>First Name</th>
         <th>Last Name</th>
+       
       </tr>
     </thead>
     <tbody>
-      <!-- row 1 -->
       <% userList.forEach((user) => { %>
       <tr class="hover">
         <td><%= user.id %></td>
@@ -37,26 +54,21 @@
   </table>
 
   <div class="pagination flex items-center justify-center p-3">
-   
-      <% if (totalPages > 1) { %> <% for (let page = 1; page <= totalPages;
-      page++) { %> <% if (page === data.meta.page) { %>
-      <button
-        type="button"
-        class=" btn btn-active btn-link"
-        href="./userlist.ejs/?page=<%= page %>"
-      ><a href="/?page=<%= page %>" class="w-3 h-3">
-        <%= page %>
-      </a>
-      </button>
-      <% } else { %>
-      <button type="button" class="btn btn-link" href="./userlist.ejs/?page=<%= page %>">
-        <a href="/?page=<%= page %>" class="w-3 h-3">
-          <%= page %>
-        </a>
-      </button>
-      <% } %> <% } %> <% } %>
-    </div>
-
+    <% if (totalPages > 1) { %> <% for (let page = 1; page <= totalPages;
+    page++) { %> <% if (page === data.meta.page) { %>
+    <button
+      type="button"
+      class="btn btn-active btn-link"
+      href="/?page=<%= page %>"
+    >
+      <a href="/?page=<%= page %>" class="w-3 h-3"> <%= page %> </a>
+    </button>
+    <% } else { %>
+    <button type="button" class="btn btn-link" href="/?page=<%= page %>">
+      <a href="/?page=<%= page %>" class="w-3 h-3"> <%= page %> </a>
+    </button>
+    <% } %> <% } %> <% } %>
+  </div>
 </div>
 
 <%- include("layouts/footer") -%>
